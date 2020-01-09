@@ -6,5 +6,6 @@
     <string name="passHint">Enter Password</string>
     <string name="and">&amp;</string>
     <string name="hexLogo">#hexology</string>
+    <string name="UernameInput"> </string>
 
 </resources>

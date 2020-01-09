@@ -13,12 +13,16 @@ public class LoginScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
-
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                TextView username = findViewById(R.id.usernameInput);
+                if(username.getText().toString().equalsIgnoreCase("a")){
+                    System.out.println("Correct username");
+                }else{
+                    System.out.println("Incorrect username");
+                }
             }
         });
 

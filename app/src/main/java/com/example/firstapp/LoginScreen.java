@@ -14,6 +14,7 @@ public class LoginScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
+<<<<<<< HEAD
 
         final Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +32,18 @@ public class LoginScreen extends AppCompatActivity {
                 textView1.setText(result + " ");
 
                 startActivity(new Intent(LoginScreen.this, Welcome.class));
+=======
+        Button loginButton = (Button) findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView username = findViewById(R.id.usernameInput);
+                if(username.getText().toString().equalsIgnoreCase("a")){
+                    System.out.println("Correct username");
+                }else{
+                    System.out.println("Incorrect username");
+                }
+>>>>>>> 02917a019525b9b7dbdf6d9c373b128eae59139b
             }
         });
 

@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">IBM Conference Manager</string>
+    <string name="app_name">Conference Assistant</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="userHint">Enter Username</string>
+    <string name="passHint">Enter Password</string>
+    <string name="and">&amp;</string>
+    <string name="hexLogo">#hexology</string>
+
 </resources>

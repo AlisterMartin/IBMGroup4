@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='IBM Conference Manager'
+rootProject.name='First App'

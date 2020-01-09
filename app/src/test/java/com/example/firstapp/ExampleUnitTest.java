@@ -1,4 +1,4 @@
-package com.SHU.ibmconferencemanager;
+package com.example.firstapp;
 
 import org.junit.Test;
 

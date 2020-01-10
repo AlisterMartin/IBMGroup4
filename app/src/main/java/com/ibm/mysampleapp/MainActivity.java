@@ -11,13 +11,6 @@ import android.view.MenuItem;
 
 import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
 
-
-
-
-
-
-
-
 public class MainActivity extends AppCompatActivity 
 { 
     

@@ -32,3 +32,7 @@ proguard/
 library/javaDoc
 
 .vscode/settings.json
+
+# credentials and api keys
+credentials.xml
+google_maps_api.xml

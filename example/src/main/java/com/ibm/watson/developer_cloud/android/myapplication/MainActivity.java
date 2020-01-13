@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Exception e) {
-                                System.out.println("Error: No resopnse given");
+                                System.out.println("Sorry there was an error with Watson Assistant. Error: " + e.toString());
                             }
                         });
                     }
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Exception e) {
                         sessionId = "-";
-                        System.out.println("Bad");
+                        System.out.println("Sorry there was an error creating the session. Error: " + e.toString());
                     }
                 });
 

@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -53,6 +54,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.addMarker(new MarkerOptions().position(venue).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(venue));
-        mMap.setMinZoomPreference(10);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(venue,15));
     }
 }

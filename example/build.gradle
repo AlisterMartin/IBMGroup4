@@ -46,4 +46,5 @@ dependencies {
         exclude group: 'com.google.code.findbugs', module: 'annotations'
     }
     implementation project(':library')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

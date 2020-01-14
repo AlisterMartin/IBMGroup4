@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Constraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background=" #cc0000">
+
+    <TextView
+        android:id="@+id/input1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/sent_message"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:text="Placeholder message"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/output1"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/input2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/sent_message"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:text="Placeholder message"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/output2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/input3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/sent_message"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:text="Placeholder message"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/output3"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/input4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/sent_message"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:text="Placeholder message"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/output1"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/recieve_message"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:text="Placeholder message"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/input2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/output2"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/recieve_message"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:text="Placeholder message"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/input3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/output3"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/recieve_message"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:text="Placeholder message"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/input4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.ibm.watson.developer_cloud.android.myapplication.StartChat
+        android:id="@+id/ChatBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cb_isSoftInputHidden="true"
+        app:cb_isTextCleanerEnabled="true"
+        app:cb_messageBoxHint="Type here..."
+        app:cb_micClickWarningMessage="warning message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" >
+
+    </com.ibm.watson.developer_cloud.android.myapplication.StartChat>
+
+    <ImageView
+        android:id="@+id/ibmImage"
+        android:layout_width="95dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:contentDescription="@string/ibm_logo2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ibm_logo" />
+
+    <ImageView
+        android:id="@+id/hexologyLogo3"
+        android:layout_width="179dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/hexology_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hexology_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.ibm.cloud.sdk.core.http.Response;

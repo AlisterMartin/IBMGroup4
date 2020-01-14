@@ -3,6 +3,7 @@ package com.ibm.watson.developer_cloud.android.myapplication;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,57 +15,61 @@ public class ChatBoxes {
     private int pointer;
     private TextView[] boxes;
     private int vis;
-    private static int MAXBOXES = 5;
+    private int MAXBOXES;
+    private boolean waiting;
 
-
-    public ChatBoxes()
-    {
+    public ChatBoxes(){
+        MAXBOXES = 10;
         this.count = 0;
         boxes = new TextView[MAXBOXES];
         vis = 0;
         pointer = 0;
+        waiting = false;
     }
 
-    public void setCount(int count)
-    {
+    public ChatBoxes(int max) {
+        MAXBOXES = max;
+        this.count = 0;
+        boxes = new TextView[MAXBOXES];
+        vis = 0;
+        pointer = 0;
+        waiting = false;
+    }
+
+    public void setCount(int count) {
         this.count = count;
     }
 
-    public void setBoxes(TextView[] boxes)
-    {
+    public void setBoxes(TextView[] boxes) {
         this.boxes = boxes;
     }
 
-    public void setVis(int vis)
-    {
+    public void setVis(int vis) {
         this.vis = vis;
-        for (int i = 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             boxes[i].setVisibility(vis);
         }
     }
 
-    public int getCount()
-    {
+    public int getCount() {
         return count;
     }
 
-    public TextView[] getBoxes()
-    {
+    public TextView[] getBoxes() {
         return boxes;
     }
 
-    public int getVis()
-    {
+    public int getVis() {
         return vis;
     }
 
-    private void initBox(String text, Context context, ConstraintLayout layout){
+    private void initBox(String text, Context context, ConstraintLayout layout) {
         boxes[0] = new TextView(context);
         boxes[0].setText(text);
         boxes[0].setId(View.generateViewId());
         boxes[0].setBackgroundResource(R.drawable.recieve_message);
         boxes[0].setTextSize(18);
-        boxes[0].setPadding(20,20,20,20);
+        boxes[0].setPadding(20, 20, 20, 20);
         layout.addView(boxes[0]);
         ConstraintSet set = new ConstraintSet();
         set.clone(layout);
@@ -76,31 +81,39 @@ public class ChatBoxes {
     }
 
     public void addUserBox(String text, Context context, ConstraintLayout layout) {
-        if(count > 0) {
-            boxes[pointer] = new TextView(context);
-            boxes[pointer].setText(text);
-            boxes[pointer].setId(View.generateViewId());
-            boxes[pointer].setBackgroundResource(R.drawable.sent_message);
-            boxes[pointer].setTextSize(18);
-            boxes[pointer].setPadding(20, 20, 20, 20);
-            layout.addView(boxes[pointer]);
-            ConstraintSet set = new ConstraintSet();
-            set.clone(layout);
-            set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-            set.connect(boxes[pointer].getId(), ConstraintSet.RIGHT, layout.getId(), ConstraintSet.RIGHT, 30);
-            set.connect(boxes[pointer - 1].getId(), ConstraintSet.BOTTOM, boxes[pointer - 1].getId(), ConstraintSet.TOP, 30);
-            set.applyTo(layout);
-            int i = count<MAXBOXES?count++:count;
-            pointer++;
-            pointer = pointer%MAXBOXES;
-        }
-        else {
-            initBox(text, context, layout);
+        if (!waiting) {
+            if (count > 0) {
+                if (boxes[pointer] != null) {
+                    layout.removeView(boxes[pointer]);
+                }
+                boxes[pointer] = new TextView(context);
+                boxes[pointer].setText(text);
+                boxes[pointer].setId(View.generateViewId());
+                boxes[pointer].setBackgroundResource(R.drawable.sent_message);
+                boxes[pointer].setTextSize(18);
+                boxes[pointer].setPadding(20, 20, 20, 20);
+                layout.addView(boxes[pointer]);
+                ConstraintSet set = new ConstraintSet();
+                set.clone(layout);
+                set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
+                set.connect(boxes[pointer].getId(), ConstraintSet.RIGHT, layout.getId(), ConstraintSet.RIGHT, 30);
+                set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+                set.applyTo(layout);
+                int i = count < MAXBOXES ? count++ : count;
+                pointer++;
+                pointer = pointer % MAXBOXES;
+                System.out.println(pointer);
+            } else {
+                initBox(text, context, layout);
+            }
         }
     }
 
     public void addAssistantBox(String text, Context context, ConstraintLayout layout) {
-        if(count > 0) {
+        if (count > 0) {
+            if (boxes[pointer] != null) {
+                layout.removeView(boxes[pointer]);
+            }
             boxes[pointer] = new TextView(context);
             boxes[pointer].setText(text);
             boxes[pointer].setId(View.generateViewId());
@@ -112,16 +125,39 @@ public class ChatBoxes {
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
             set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
-            set.connect(boxes[pointer - 1].getId(), ConstraintSet.BOTTOM, boxes[pointer - 1].getId(), ConstraintSet.TOP, 30);
+            set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
             set.applyTo(layout);
-            int i = count<MAXBOXES?count++:count;
+            count = count < MAXBOXES ? count + 1 : MAXBOXES;
             pointer++;
-            pointer = pointer%MAXBOXES;
-        }
-        else {
+            pointer = pointer % MAXBOXES;
+            waiting = false;
+        } else {
             initBox(text, context, layout);
+            waiting = false;
         }
     }
 
+    public void addAssistantTyping(Context context, ConstraintLayout layout) {
+        if (!waiting) {
+            waiting = true;
+            if (boxes[pointer] != null) {
+                layout.removeView(boxes[pointer]);
+            }
+            boxes[pointer] = new TextView(context);
+            boxes[pointer].setText("...");
+            boxes[pointer].setId(View.generateViewId());
+            boxes[pointer].setBackgroundResource(R.drawable.recieve_message);
+            boxes[pointer].setTextSize(18);
+            boxes[pointer].setPadding(20, 20, 20, 20);
+            layout.addView(boxes[pointer]);
+            ConstraintSet set = new ConstraintSet();
+            set.clone(layout);
+            set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
+            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
+            set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+            set.applyTo(layout);
+
+        }
+    }
 
 }

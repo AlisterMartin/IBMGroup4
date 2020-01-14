@@ -18,7 +18,7 @@ public class AIChat extends AppCompatActivity {
 
         final StartChat chatBarView;
 
-        ChatBoxes cb = new ChatBoxes();
+        final ChatBoxes cb = new ChatBoxes();
         cb.addAssistantBox("hello", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
         chatBarView = (StartChat) findViewById(R.id.ChatBar);
@@ -27,11 +27,8 @@ public class AIChat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Animation animPopUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.message_pop_up);
-                TextView input1 = (TextView) findViewById(R.id.input1);
-                input1.setVisibility(View.VISIBLE);
-                input1.startAnimation(animPopUp);
-                input1.setText(chatBarView.getMessageText());
+                cb.addUserBox(chatBarView.getMessageText(), getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
+                cb.addAssistantTyping(getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
             }
         });

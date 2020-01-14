@@ -5,7 +5,17 @@
     android:id="@+id/Constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background=" #cc0000">
+    android:background="#CC0000">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="332dp"
+        app:layout_constraintBottom_toTopOf="@+id/ChatBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/gradient" />
 
     <com.ibm.watson.developer_cloud.android.myapplication.StartChat
         android:id="@+id/ChatBar"
@@ -18,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent">
 
     </com.ibm.watson.developer_cloud.android.myapplication.StartChat>
 

@@ -1,9 +1,7 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -97,12 +95,11 @@ public class ChatBoxes {
                 set.clone(layout);
                 set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
                 set.connect(boxes[pointer].getId(), ConstraintSet.RIGHT, layout.getId(), ConstraintSet.RIGHT, 30);
-                set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+                set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
                 set.applyTo(layout);
                 int i = count < MAXBOXES ? count++ : count;
                 pointer++;
                 pointer = pointer % MAXBOXES;
-                System.out.println(pointer);
             } else {
                 initBox(text, context, layout);
             }
@@ -125,12 +122,14 @@ public class ChatBoxes {
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
             set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
-            set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+            set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
             set.applyTo(layout);
             count = count < MAXBOXES ? count + 1 : MAXBOXES;
             pointer++;
             pointer = pointer % MAXBOXES;
             waiting = false;
+            System.out.println(pointer);
+            System.out.println(count);
         } else {
             initBox(text, context, layout);
             waiting = false;
@@ -154,9 +153,8 @@ public class ChatBoxes {
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
             set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
-            set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+            set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
             set.applyTo(layout);
-
         }
     }
 

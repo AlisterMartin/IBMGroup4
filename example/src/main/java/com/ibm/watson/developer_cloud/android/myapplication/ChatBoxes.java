@@ -1,9 +1,9 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
 import android.content.Context;
-import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.MultiAutoCompleteTextView;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,6 +18,7 @@ public class ChatBoxes {
     private int MAXBOXES;
     private boolean waiting;
 
+
     public ChatBoxes(){
         MAXBOXES = 10;
         this.count = 0;
@@ -25,6 +26,7 @@ public class ChatBoxes {
         vis = 0;
         pointer = 0;
         waiting = false;
+
     }
 
     public ChatBoxes(int max) {
@@ -70,6 +72,7 @@ public class ChatBoxes {
         boxes[0].setBackgroundResource(R.drawable.recieve_message);
         boxes[0].setTextSize(18);
         boxes[0].setPadding(20, 20, 20, 20);
+        boxes[pointer].setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(boxes[0]);
         ConstraintSet set = new ConstraintSet();
         set.clone(layout);
@@ -92,17 +95,17 @@ public class ChatBoxes {
                 boxes[pointer].setBackgroundResource(R.drawable.sent_message);
                 boxes[pointer].setTextSize(18);
                 boxes[pointer].setPadding(20, 20, 20, 20);
+                boxes[pointer].setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
                 layout.addView(boxes[pointer]);
                 ConstraintSet set = new ConstraintSet();
                 set.clone(layout);
                 set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
                 set.connect(boxes[pointer].getId(), ConstraintSet.RIGHT, layout.getId(), ConstraintSet.RIGHT, 30);
-                set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+                set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
                 set.applyTo(layout);
                 int i = count < MAXBOXES ? count++ : count;
                 pointer++;
                 pointer = pointer % MAXBOXES;
-                System.out.println(pointer);
             } else {
                 initBox(text, context, layout);
             }
@@ -120,17 +123,20 @@ public class ChatBoxes {
             boxes[pointer].setBackgroundResource(R.drawable.recieve_message);
             boxes[pointer].setTextSize(18);
             boxes[pointer].setPadding(20, 20, 20, 20);
+            boxes[pointer].setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
             layout.addView(boxes[pointer]);
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
             set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
-            set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+            set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
             set.applyTo(layout);
             count = count < MAXBOXES ? count + 1 : MAXBOXES;
             pointer++;
             pointer = pointer % MAXBOXES;
             waiting = false;
+            System.out.println(pointer);
+            System.out.println(count);
         } else {
             initBox(text, context, layout);
             waiting = false;
@@ -149,14 +155,14 @@ public class ChatBoxes {
             boxes[pointer].setBackgroundResource(R.drawable.recieve_message);
             boxes[pointer].setTextSize(18);
             boxes[pointer].setPadding(20, 20, 20, 20);
+            boxes[pointer].setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
             layout.addView(boxes[pointer]);
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
             set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
-            set.connect(boxes[(pointer + MAXBOXES - 1) % 5].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+            set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
             set.applyTo(layout);
-
         }
     }
 

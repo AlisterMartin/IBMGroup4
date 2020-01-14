@@ -1,6 +1,6 @@
 package com.ibm.watson.developer_cloud.android.library.util;
 
-import android.support.v4.content.FileProvider;
+import androidx.core.content.FileProvider;
 
 /**
  * Trivial subclass of FileProvider to avoid provider authority collisions.

@@ -29,6 +29,8 @@
 <string name="welcome_to_your_personalised_conference_assistant">Welcome to your Personalised Conference Assistant.</string>
 <string name="type_start_to_get_started">Type \'start\' to get started...</string>
 <string name="background">background</string>
+    <string name="submit">submit</string>
+    <string name="get_directions">Get Directions</string>
 
 </resources>
 

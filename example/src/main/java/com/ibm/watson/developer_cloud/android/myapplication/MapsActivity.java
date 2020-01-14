@@ -1,16 +1,11 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
-import android.Manifest;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
+import androidx.core.app.ActivityCompat;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 0;
+    private String conferenceAddress = "123 Somewhere Lane \n Sheffield \n s1 5hk";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +26,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
+
+        TextView address = (TextView) findViewById(R.id.Address);
+        address.setText(conferenceAddress);
     }
 
 
@@ -55,5 +53,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(venue).title("Scottish Event Campus Ltd Glasgow, Scotland, G3 8YW"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(venue));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(venue,15));
+
     }
+
 }

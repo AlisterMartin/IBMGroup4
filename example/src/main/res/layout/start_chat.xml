@@ -48,8 +48,8 @@
             android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:background="@drawable/blue_circle"
-            android:foreground="?attr/selectableItemBackground"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:backgroundTint="@color/colorPrimary"
+            android:foreground="?attr/selectableItemBackground" />
 
     </LinearLayout>
 </FrameLayout>

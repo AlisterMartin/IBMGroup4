@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">AI Assistant</string>
+    <string name="translation_label">Translation:</string>
+    <string name="translate">translate</string>
+    <string name="input_hint">enter text</string>
+    <string name="target_language">Target Language</string>
+    <string name="spanish">Spanish</string>
+    <string name="french">French</string>
+    <string name="italian">Italian</string>
+    <string name="microphone">Microphone</string>
+    <string name="play">Play</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
+<string name="username">Username</string>
+<string name="password">Password</string>
+<string name="userHint">Enter Username</string>
+<string name="passHint">Enter Password</string>
+<string name="and">&amp;amp;</string>
+<string name="hexLogo">#hexology</string>
+<string name="UsernameInput"> </string>
+<string name="login">Login</string>
+<string name="uName"></string>
+<string name="wrong_username">* Wrong Username</string>
+<string name="ibm_logo">ibm_logo</string>
+<string name="hexology_logo">hexology_logo</string>
+<string name="conference_assistant">Conference Assistant</string>
+<string name="forgot_password">Forgot Password?</string>
+<string name="ibm_logo2">ibm_logo</string>
+<string name="welcome_to_your_personalised_conference_assistant">Welcome to your Personalised Conference Assistant.</string>
+<string name="get_started">Press the tick to get started...</string>
+<string name="background">background</string>
+    <string name="submit">submit</string>
+    <string name="get_directions">Get Directions</string>
+
+</resources>
+

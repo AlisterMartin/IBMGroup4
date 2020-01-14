@@ -1,5 +1,6 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,7 +38,7 @@ public class AIChat extends AppCompatActivity {
         final StartChat chatBarView;
 
         final ChatBoxes cb = new ChatBoxes();
-        cb.addAssistantBox("hello", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
+        cb.addAssistantBox("Hello, I am Watson Assistant. Your conference planner.", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
         assistant.createSession(options).enqueue(new ServiceCallback<SessionResponse>() {
             @Override
@@ -85,6 +86,17 @@ public class AIChat extends AppCompatActivity {
                         }
                     }
                     cb.addAssistantBox(tempResponse, getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
+
+                    if(tempResponse.equalsIgnoreCase("Here is your route to the conference.")){
+                        try{
+                            sleep(1000);
+                        }
+                        catch(InterruptedException e){
+                            e.printStackTrace();
+                        }
+                        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                        startActivity(intent);
+                    }
                 }
 
             }

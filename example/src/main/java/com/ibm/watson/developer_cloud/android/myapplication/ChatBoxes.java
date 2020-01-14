@@ -1,7 +1,9 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,6 +18,7 @@ public class ChatBoxes {
     private int MAXBOXES;
     private boolean waiting;
 
+
     public ChatBoxes(){
         MAXBOXES = 10;
         this.count = 0;
@@ -23,6 +26,7 @@ public class ChatBoxes {
         vis = 0;
         pointer = 0;
         waiting = false;
+
     }
 
     public ChatBoxes(int max) {
@@ -68,6 +72,7 @@ public class ChatBoxes {
         boxes[0].setBackgroundResource(R.drawable.recieve_message);
         boxes[0].setTextSize(18);
         boxes[0].setPadding(20, 20, 20, 20);
+        boxes[pointer].setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         layout.addView(boxes[0]);
         ConstraintSet set = new ConstraintSet();
         set.clone(layout);
@@ -90,6 +95,7 @@ public class ChatBoxes {
                 boxes[pointer].setBackgroundResource(R.drawable.sent_message);
                 boxes[pointer].setTextSize(18);
                 boxes[pointer].setPadding(20, 20, 20, 20);
+                boxes[pointer].setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
                 layout.addView(boxes[pointer]);
                 ConstraintSet set = new ConstraintSet();
                 set.clone(layout);
@@ -117,6 +123,7 @@ public class ChatBoxes {
             boxes[pointer].setBackgroundResource(R.drawable.recieve_message);
             boxes[pointer].setTextSize(18);
             boxes[pointer].setPadding(20, 20, 20, 20);
+            boxes[pointer].setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
             layout.addView(boxes[pointer]);
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);
@@ -148,6 +155,7 @@ public class ChatBoxes {
             boxes[pointer].setBackgroundResource(R.drawable.recieve_message);
             boxes[pointer].setTextSize(18);
             boxes[pointer].setPadding(20, 20, 20, 20);
+            boxes[pointer].setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
             layout.addView(boxes[pointer]);
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);

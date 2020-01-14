@@ -7,6 +7,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 public class AIChat extends AppCompatActivity {
 
     @Override
@@ -16,17 +18,8 @@ public class AIChat extends AppCompatActivity {
 
         final StartChat chatBarView;
 
-        TextView input1 = (TextView) findViewById(R.id.input1);
-        TextView output1 = (TextView) findViewById(R.id.output1);
-        TextView input2 = (TextView) findViewById(R.id.input2);
-        TextView output2 = (TextView) findViewById(R.id.output2);
-        TextView input3 = (TextView) findViewById(R.id.input3);
-        TextView output3 = (TextView) findViewById(R.id.output3);
-        TextView input4 = (TextView) findViewById(R.id.input4);
-
-        TextView[] ChatBoxes = {input1,output1, input2, output2, input3, output3, input4};
-
-        ChatBoxes cb = new ChatBoxes(7, ChatBoxes, false);
+        ChatBoxes cb = new ChatBoxes();
+        cb.addAssistantBox("hello", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
         chatBarView = (StartChat) findViewById(R.id.ChatBar);
 
@@ -42,11 +35,5 @@ public class AIChat extends AppCompatActivity {
 
             }
         });
-
-        if (input1.getText() != null)
-        {
-            input1.setVisibility(View.VISIBLE);
-
-        }
     }
 }

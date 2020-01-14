@@ -1,15 +1,14 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Welcome extends AppCompatActivity {
 
@@ -19,9 +18,6 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.welcome);
 
         final StartChat chatBarView;
-        String text;
-        Animation animPopUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.message_pop_up);
-
 
         TextView Text1 = (TextView)findViewById(R.id.message1);
         User u1 = (User)getIntent().getSerializableExtra("user");
@@ -34,62 +30,18 @@ public class Welcome extends AppCompatActivity {
         Animation animSlideLeftDelay = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_left_delay);
         Text2.startAnimation(animSlideLeftDelay);
 
-        chatBarView = (StartChat) findViewById(R.id.ChatBar);
+        FloatingActionButton tick = (FloatingActionButton) findViewById(R.id.FABWel);
+                tick.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-        chatBarView.setSendClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(), AIChat.class);
+                        startActivity(intent);
 
-                TextView inputMessage = (TextView) findViewById(R.id.message_body);
-                inputMessage.setVisibility(View.VISIBLE);
-
-                inputMessage.setText(chatBarView.getMessageText());
-
-                if(chatBarView.getMessageText().equalsIgnoreCase("start"))
-                {
-                    Animation animPopUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.message_pop_up);
-                    Animation animPopUpDelay = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.message_pop_up_delay);
-                    inputMessage.startAnimation(animPopUp);
-
-                    TextView outputMessage = (TextView) findViewById(R.id.message_recieve);
-                    outputMessage.startAnimation(animPopUpDelay);
-                    outputMessage.setText("Great!");
-
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
                     }
-
-                    Intent intent = new Intent(getApplicationContext(), AIChat.class);
-                    startActivity(intent);
-
-
-                }
-                else {
-                    Animation animPopUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.message_pop_up);
-                    Animation animPopUpDelay = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.message_pop_up_delay);
-                    inputMessage.startAnimation(animPopUp);
-                    TextView outputMessage = (TextView) findViewById(R.id.message_recieve);
-                    outputMessage.startAnimation(animPopUpDelay);
-                    outputMessage.setText("Type 'Start' to get started...");
-                }
-
+                });
 
             }
-        });
-
-        text = chatBarView.getMessageText();
+        }
 
 
-    }
-
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
-}

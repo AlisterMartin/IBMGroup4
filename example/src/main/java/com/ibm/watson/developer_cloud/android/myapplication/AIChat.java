@@ -1,14 +1,8 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.TextView;
-
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AIChat extends AppCompatActivity {

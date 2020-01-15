@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class SelectTags extends AppCompatActivity {
-    private int selectedIndex1, selectedIndex2, selectedIndex3, nextSelect = 1;
+    private ArrayList<Integer> tagIndexes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class SelectTags extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_tags);
         ArrayList<String> tags = Data.getUniqueTags();
-        ConstraintLayout layout = findViewById(R.id.innerLayout);
+        final ConstraintLayout layout = findViewById(R.id.innerLayout);
         TextView text1 = new TextView(getApplicationContext());
         text1.setText(tags.get(0));
         text1.setId(View.generateViewId());
@@ -32,15 +32,23 @@ public class SelectTags extends AppCompatActivity {
         text1.setTextSize(20);
         text1.setPadding(20, 20, 20, 20);
         text1.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        final int tmpid1= text1.getId();
         text1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch(nextSelect){
-                    case 1 : selectedIndex1 = 0;
-                        break;
-                    case 2 : selectedIndex2 = 0;
-                        break;
-                    default: selectedIndex3 = 0;
+                boolean flag = false;
+                for (int i = 0; i < tagIndexes.size(); i++){
+                    if (!flag && tagIndexes.get(i) == 0){
+                        System.out.println(0 + " deactivate");
+                        tagIndexes.remove(i);
+                        layout.getViewById(tmpid1).setBackgroundResource(R.color.lightRed);
+                        flag = true;
+                    }
+                }
+                if (!flag){
+                    System.out.println(0 + " activate");
+                    tagIndexes.add(0);
+                    layout.getViewById(tmpid1).setBackgroundResource(R.color.lightGreen);
                 }
             }
         });
@@ -49,6 +57,7 @@ public class SelectTags extends AppCompatActivity {
         set1.clone(layout);
         set1.connect(text1.getId(), ConstraintSet.TOP, layout.getId(), ConstraintSet.TOP, 400);
         set1.connect(text1.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
+        set1.constrainWidth(text1.getId(), 300);
         set1.applyTo(layout);
         for (int i = 1; i < tags.size(); i++){
             TextView text = new TextView(getApplicationContext());
@@ -59,15 +68,23 @@ public class SelectTags extends AppCompatActivity {
             text.setPadding(20, 20, 20, 20);
             text.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
             final int temp = i;
+            final int tmpid= text.getId();
             text.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    switch(nextSelect){
-                        case 1 : selectedIndex1 = temp;
-                            break;
-                        case 2 : selectedIndex2 = temp;
-                            break;
-                        default: selectedIndex3 = temp;
+                    boolean flag = false;
+                    for (int i = 0; i < tagIndexes.size(); i++){
+                        if (!flag && tagIndexes.get(i) == temp){
+                            System.out.println(temp + " deactivate");
+                            tagIndexes.remove(i);
+                            layout.getViewById(tmpid).setBackgroundResource(R.color.lightRed);
+                            flag = true;
+                        }
+                    }
+                    if (!flag){
+                        System.out.println(temp + " activate");
+                        tagIndexes.add(temp);
+                        layout.getViewById(tmpid).setBackgroundResource(R.color.lightGreen);
                     }
                 }
             });
@@ -81,8 +98,10 @@ public class SelectTags extends AppCompatActivity {
                 set.connect(text.getId(), ConstraintSet.TOP, tempViewID, ConstraintSet.TOP);
                 set.connect(text.getId(), ConstraintSet.LEFT, tempViewID, ConstraintSet.RIGHT, 30);
             }
+            set.constrainWidth(text.getId(), 300);
             tempViewID = text.getId();
             set.applyTo(layout);
         }
     }
+
 }

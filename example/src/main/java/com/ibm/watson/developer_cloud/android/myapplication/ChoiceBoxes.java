@@ -85,6 +85,7 @@ public class ChoiceBoxes {
                 set.connect(boxRows[pointer].getId(), ConstraintSet.TOP, layout.getId(), ConstraintSet.TOP, 200);
                 set.connect(boxRows[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 0);
                 set.connect(boxRows[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxRows[pointer].getId(), ConstraintSet.TOP, 30);
+                set.constrainWidth(boxRows[pointer].getId(), 600);
                 set.applyTo(layout);
                 int i = count < MAXBOXES ? count++ : count;
                 pointer++;

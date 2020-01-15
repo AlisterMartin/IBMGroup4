@@ -4,5 +4,6 @@
   <color name="colorAccent">#000</color>
   <color name="hexRed">#cc0000</color>
   <color name="lightRed">#ffd3d3</color>
+  <color name="lightGreen">#90ee90</color>
 
 </resources>

@@ -1,43 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <ScrollView
-        android:id="@+id/scroll"
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:overScrollMode="always"
-        android:scrollbarStyle="insideOverlay">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/innerLayout"
+        <ScrollView
+            android:id="@+id/scroll1"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideOverlay">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/innerLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="176dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/gradient3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/todo"
+            app:srcCompat="@drawable/gradient" />
 
+        <ImageView
+            android:id="@+id/back3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:contentDescription="@string/todo"
+            app:srcCompat="@color/hexRed" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-    <ImageView
-        android:id="@+id/gradient3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:contentDescription="@string/todo"
-        app:srcCompat="@drawable/gradient" />
-
-    <ImageView
-        android:id="@+id/back3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:contentDescription="@string/todo"
-        app:srcCompat="@color/hexRed" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

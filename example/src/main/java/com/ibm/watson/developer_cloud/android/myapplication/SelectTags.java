@@ -103,7 +103,7 @@ public class SelectTags extends AppCompatActivity {
             tempViewID = text.getId();
             set.applyTo(layout);
         }
-        FloatingActionButton fab = findViewById(R.id.FABdone);
+        FloatingActionButton fab = findViewById(R.id.FABdone2);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,5 +118,3 @@ public class SelectTags extends AppCompatActivity {
         });
     }
 }
-
-

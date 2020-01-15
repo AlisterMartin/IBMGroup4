@@ -18,7 +18,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Collections;
 
@@ -140,5 +142,23 @@ public class Data {
             }
         }
         return talks;
+    }
+
+    public static boolean isConfrenceOverLapping(int index1, int index2){
+        SimpleDateFormat sfmt = new SimpleDateFormat("E  MMM dd  yyyy - HH:mm:ss"); //format for start date
+        SimpleDateFormat efmt = new SimpleDateFormat("E  MMM dd  yyyy HH:mm"); //format for end date
+        Date sDate = null; // the date for the start of conf 2
+        Date eDate = null; // the date for the end of conf 1
+        try{
+            sDate = sfmt.parse(confrences.get(index2).startTime);
+            eDate = efmt.parse(confrences.get(index1).endTime);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        if(eDate.after(sDate)){
+            return true;
+        }
+        return false;
     }
 }

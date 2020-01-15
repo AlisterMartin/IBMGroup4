@@ -6,40 +6,23 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ConstraintParent"
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#00CC0000">
+        android:fillViewport="true"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideOverlay">
 
-        <com.ibm.watson.developer_cloud.android.myapplication.StartChat
-            android:id="@+id/ChatBar"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Constraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cb_isSoftInputHidden="true"
-            app:cb_isTextCleanerEnabled="true"
-            app:cb_messageBoxHint="Type here..."
-            app:cb_micClickWarningMessage="warning message"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
 
-        </com.ibm.watson.developer_cloud.android.myapplication.StartChat>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Constraint"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <ImageView
         android:id="@+id/gradient"
@@ -52,7 +35,7 @@
     <ImageView
         android:id="@+id/back"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="50dp"
         android:contentDescription="@string/todo"
         app:srcCompat="@color/hexRed" />
 
@@ -80,6 +63,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ibm_logo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00CC0000">
+
+        <com.ibm.watson.developer_cloud.android.myapplication.StartChat
+            android:id="@+id/ChatBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cb_isSoftInputHidden="true"
+            app:cb_isTextCleanerEnabled="true"
+            app:cb_messageBoxHint="Type here..."
+            app:cb_micClickWarningMessage="warning message"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </com.ibm.watson.developer_cloud.android.myapplication.StartChat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

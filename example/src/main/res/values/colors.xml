@@ -2,7 +2,7 @@
 <resources>
   <color name="colorPrimary">#f4f4f4</color>
   <color name="colorAccent">#000</color>
-  <color name="hexRed">#cc0000</color>
+  <color name="hexRed">#CC0000</color>
   <color name="lightRed">#ffd3d3</color>
 
 </resources>

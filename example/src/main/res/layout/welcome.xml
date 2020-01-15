@@ -12,7 +12,6 @@
         android:layout_width="95dp"
         android:layout_height="60dp"
         android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
         android:contentDescription="@string/ibm_logo2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +23,6 @@
         android:layout_height="56dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:contentDescription="@string/hexology_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -64,7 +62,7 @@
         android:layout_marginBottom="20dp"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/ic_check_black_24dp"
+        app:srcCompat="@drawable/ic_check_black_24dp"
         app:backgroundTint="#fff"
         app:borderWidth="2dp"
         app:fabCustomSize="75dp"
@@ -73,5 +71,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="60dp"
         app:useCompatPadding="true" />
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="81dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/FABWel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_arrow_forward_black_24dp"
+        tools:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

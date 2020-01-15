@@ -28,8 +28,8 @@
 
             <EditText
                 android:id="@+id/messageEditText"
-                android:layout_width="316dp"
-                android:layout_height="35dp"
+                android:layout_width="296dp"
+                android:layout_height="30dp"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="12dp"
                 android:background="@null"
@@ -38,17 +38,16 @@
                 android:scrollbars="vertical"
                 android:singleLine="false"
                 android:textColorHint="#c4c0bd"
-                android:textSize="18sp" />
+                android:textSize="20dp" />
 
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/sendButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:background="@drawable/ic_arrow_drop_down_circle_black_24dp"
-            android:backgroundTint="@color/colorPrimary"
             android:foreground="?attr/selectableItemBackground" />
 
     </LinearLayout>

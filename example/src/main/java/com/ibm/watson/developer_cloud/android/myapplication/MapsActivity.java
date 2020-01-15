@@ -5,6 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.FragmentActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,17 +37,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         addressT.setText(conferenceTitle);
         address.setText(conferenceAddress);
 
+        TextView bounceText = (TextView) findViewById(R.id.directions);
+        Animation bounce = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+        bounceText.startAnimation(bounce);
+
         FloatingActionButton fab = findViewById(R.id.FAB);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Uri gmmIntentUri = Uri.parse("geo:55.861224,-4.288927");
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=Exhibition+Way+Glasgow&mode=w");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(mapIntent);
                 }
+
             }
         });
     }

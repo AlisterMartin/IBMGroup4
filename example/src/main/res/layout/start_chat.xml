@@ -38,16 +38,19 @@
                 android:scrollbars="vertical"
                 android:singleLine="false"
                 android:textColorHint="#c4c0bd"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:autofillHints="" />
 
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/sendButton"
+            style="@style/Widget.AppCompat.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:background="@drawable/ic_arrow_drop_down_circle_black_24dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="TODO"
             android:foreground="?attr/selectableItemBackground" />
 
     </LinearLayout>

@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class LoginScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
+        Data.initData(getApplicationContext());
 
         final Button loginButton = (Button) findViewById(R.id.loginButton);
 
@@ -23,6 +26,20 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                ArrayList<String> uniqueTagNames = Data.getUniqueTags();
+                ArrayList<String> options = new ArrayList<>();
+                options.add("addiction");
+                options.add("aging");
+                ArrayList<Integer> talks = Data.getTalksIndexUsingTags(options);
+                for(int i = 0; i < talks.size(); i++){
+                    int p = talks.get(i);
+                    ArrayList<String> s = Data.tags.get(p).tags;
+                    for(int j = 0; j < s.size(); j++){
+                        System.out.println(s.get(j));
+                    }
+                    System.out.println("/n");
+                }
+                System.out.println("done!");
                 EditText username = findViewById(R.id.usernameInput);
 
                 if (username.getText().toString().equalsIgnoreCase("")) {

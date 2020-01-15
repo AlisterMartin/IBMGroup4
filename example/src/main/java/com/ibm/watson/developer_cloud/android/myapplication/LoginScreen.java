@@ -19,9 +19,6 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.login_screen);
         Data.initData(getApplicationContext());
 
-
-        Intent i = new Intent(getApplicationContext(), TalkSelector.class);
-        startActivity(i);
         final Button loginButton = (Button) findViewById(R.id.loginButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {

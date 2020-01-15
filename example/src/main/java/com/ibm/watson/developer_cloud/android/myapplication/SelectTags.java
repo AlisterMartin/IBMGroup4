@@ -1,5 +1,6 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.DisplayMetrics;
@@ -112,7 +113,9 @@ public class SelectTags extends AppCompatActivity {
                         ArrayList<String> tags = Data.getUniqueTags();
                         Data.userSelectedTags.add(tags.get(i));
                     }
-                    finish();
+                    Intent i = new Intent(getApplicationContext(), TalkSelector.class);
+                    startActivity(i);
+                    //finish();
                 }
             }
         });

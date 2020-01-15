@@ -18,12 +18,23 @@ import java.util.List;
 
 public class TalkSelector extends AppCompatActivity {
     private ArrayList<Integer> talkIndexes = new ArrayList<>();
+    private ArrayList<Integer> possibleTalks = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstance) {
 
         super.onCreate(savedInstance);
         setContentView(R.layout.talk_selector);
+
+        for(int i = 0; i < Data.confrences.size(); i++){
+            for(String s : Data.userSelectedTags){
+                for(String tag : Data.tags.get(i).tags){
+                    if(tag.equalsIgnoreCase(s) && !possibleTalks.contains(i)){
+                        possibleTalks.add(i);
+                    }
+                }
+            }
+        }
 
         int tempViewID;
         int prevIndex;
@@ -32,12 +43,11 @@ public class TalkSelector extends AppCompatActivity {
         display.getMetrics(dm);
         final int width = (dm.widthPixels - 120) / 3;
 
-        List<Confrence> talks = Data.confrences;
         final ConstraintLayout layout = findViewById(R.id.ProgramaticConstraintLayout);
 
         TextView text1 = new TextView(getApplicationContext());
         text1.setId(View.generateViewId());
-        text1.setText(Data.confrences.get(0).startTime + " - " + Data.confrences.get(0).endTime);
+        text1.setText(Data.confrences.get(possibleTalks.get(0)).startTime + " - " + Data.confrences.get(possibleTalks.get(0)).endTime);
         text1.setTextSize(25);
         text1.setPadding(20, 20, 20, 20);
         text1.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -50,7 +60,7 @@ public class TalkSelector extends AppCompatActivity {
         set1.applyTo(layout);
 
         TextView text2 = new TextView(getApplicationContext());
-        text2.setText(talks.get(0).title);
+        text2.setText(Data.confrences.get(possibleTalks.get(0)).title);
         text2.setId(View.generateViewId());
         text2.setBackgroundResource(R.color.lightRed);
         text2.setTextSize(20);
@@ -70,11 +80,19 @@ public class TalkSelector extends AppCompatActivity {
                         flag = true;
                     }
                 }
-                if (!flag) {
+                boolean overlap = false;
+                for (int i : talkIndexes){
+                    if(Data.isConfrenceOverLapping(possibleTalks.get(temp2)<possibleTalks.get(i)?possibleTalks.get(temp2):possibleTalks.get(i),possibleTalks.get(temp2)>=possibleTalks.get(i)?possibleTalks.get(temp2):possibleTalks.get(i))){
+                        System.out.println("OVERLAP");
+                        overlap = true;
+                    }
+                }
+                if (!flag && !overlap) {
                     System.out.println(temp2 + " activate");
                     talkIndexes.add(temp2);
                     layout.getViewById(tmpid2).setBackgroundResource(R.color.lightGreen);
                 }
+
             }
         });
         layout.addView(text2);
@@ -85,10 +103,10 @@ public class TalkSelector extends AppCompatActivity {
         tempViewID = text2.getId();
         set2.applyTo(layout);
 
-        for (int i = 1; i < talks.size(); i++) {
-            if (!Data.confrences.get(i - 1).startTime.equalsIgnoreCase(Data.confrences.get(i).startTime)) {
+        for (int i = 1; i < possibleTalks.size(); i++) {
+            if (!Data.confrences.get(possibleTalks.get(i-1)).startTime.equalsIgnoreCase(Data.confrences.get(possibleTalks.get(i)).startTime)) {
                 TextView text = new TextView(getApplicationContext());
-                text.setText(Data.confrences.get(i).startTime);
+                text.setText(Data.confrences.get(possibleTalks.get(i)).startTime + " - " + Data.confrences.get(possibleTalks.get(i)).endTime);
                 text.setId(View.generateViewId());
                 text.setTextSize(25);
                 text.setPadding(20, 20, 20, 20);
@@ -102,7 +120,7 @@ public class TalkSelector extends AppCompatActivity {
                 set.applyTo(layout);
             }
             TextView text = new TextView(getApplicationContext());
-            text.setText(talks.get(i).title);
+            text.setText(Data.confrences.get(possibleTalks.get(i)).title);
             text.setId(View.generateViewId());
             text.setBackgroundResource(R.color.lightRed);
             text.setTextSize(20);
@@ -122,11 +140,19 @@ public class TalkSelector extends AppCompatActivity {
                             flag = true;
                         }
                     }
-                    if (!flag) {
+                    boolean overlap = false;
+                    for (int i : talkIndexes){
+                        if(Data.isConfrenceOverLapping(possibleTalks.get(temp)<possibleTalks.get(i)?possibleTalks.get(temp):possibleTalks.get(i) ,possibleTalks.get(temp)>=possibleTalks.get(i)?possibleTalks.get(temp):possibleTalks.get(i))){
+                            System.out.println("OVERLAP");
+                            overlap = true;
+                        }
+                    }
+                    if (!flag && !overlap) {
                         System.out.println(temp + " activate");
                         talkIndexes.add(temp);
                         layout.getViewById(tmpid).setBackgroundResource(R.color.lightGreen);
                     }
+
                 }
             });
             layout.addView(text);

@@ -7,11 +7,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Constraint"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#00CC0000"/>
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00CC0000" />
+    </ScrollView>
 
     <ImageView
         android:id="@+id/gradient"
@@ -20,6 +25,39 @@
         android:layout_marginTop="40dp"
         android:contentDescription="@string/todo"
         app:srcCompat="@drawable/gradient" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:contentDescription="@string/todo"
+        app:srcCompat="@color/hexRed" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/hexologyLogo3"
+            android:layout_width="179dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:contentDescription="@string/hexology_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/hexology_name" />
+
+        <ImageView
+            android:id="@+id/ibmImage"
+            android:layout_width="95dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:contentDescription="@string/ibm_logo2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ibm_logo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -42,37 +80,6 @@
             app:maxImageSize="60dp"
             app:srcCompat="@drawable/ic_check_black_24dp"
             app:useCompatPadding="true" />
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:contentDescription="@string/todo"
-            app:layout_constraintEnd_toStartOf="@+id/ibmImage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@color/hexRed" />
-
-        <ImageView
-            android:id="@+id/ibmImage"
-            android:layout_width="95dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
-            android:contentDescription="@string/ibm_logo2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ibm_logo" />
-
-        <ImageView
-            android:id="@+id/hexologyLogo3"
-            android:layout_width="179dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:contentDescription="@string/hexology_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/hexology_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

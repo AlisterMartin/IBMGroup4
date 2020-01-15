@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -100,6 +102,17 @@ public class SelectTags extends AppCompatActivity {
             set.connect(text.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
             tempViewID = text.getId();
             set.applyTo(layout);
+            FloatingActionButton fab = findViewById(R.id.FABdone);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for(int i : tagIndexes){
+                        ArrayList<String> tags = Data.getUniqueTags();
+                        Data.userSelectedTags.add(tags.get(i));
+                    }
+                    finish();
+                }
+            });
         }
     }
 

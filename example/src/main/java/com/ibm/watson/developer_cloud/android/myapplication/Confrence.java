@@ -19,4 +19,13 @@ public class Confrence {
         this.speakers = speakers;
         this.description = description;
     }
+
+    public String timeInString(){
+        String[] s = startTime.split(" ");
+        String[] e = endTime.split(" ");
+
+        return (s[0] + " " + s[2] + " " + s[3] + " " + s[5] + " " + s[7] + " to " + e[6]);
+    }
+
+
 }

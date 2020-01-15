@@ -26,7 +26,7 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ArrayList<String> uniqueTagNames = Data.getUniqueTags();
+                /*ArrayList<String> uniqueTagNames = Data.getUniqueTags();
                 ArrayList<String> options = new ArrayList<>();
                 options.add("addiction");
                 options.add("aging");
@@ -39,7 +39,7 @@ public class LoginScreen extends AppCompatActivity {
                     }
                     System.out.println("/n");
                 }
-                System.out.println("done!");
+                System.out.println("done!");*/
                 EditText username = findViewById(R.id.usernameInput);
 
                 if (username.getText().toString().equalsIgnoreCase("")) {

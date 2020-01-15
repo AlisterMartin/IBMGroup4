@@ -6,6 +6,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -84,6 +85,7 @@ public class TalkSelector extends AppCompatActivity {
                 for (int i : talkIndexes){
                     if(Data.isConfrenceOverLapping(possibleTalks.get(temp2)<possibleTalks.get(i)?possibleTalks.get(temp2):possibleTalks.get(i),possibleTalks.get(temp2)>=possibleTalks.get(i)?possibleTalks.get(temp2):possibleTalks.get(i))){
                         System.out.println("OVERLAP");
+                        Toast.makeText(TalkSelector.this, "Talk timing conflict, choose another talk", Toast.LENGTH_SHORT).show();
                         overlap = true;
                     }
                 }
@@ -144,6 +146,7 @@ public class TalkSelector extends AppCompatActivity {
                     for (int i : talkIndexes){
                         if(Data.isConfrenceOverLapping(possibleTalks.get(temp)<possibleTalks.get(i)?possibleTalks.get(temp):possibleTalks.get(i) ,possibleTalks.get(temp)>=possibleTalks.get(i)?possibleTalks.get(temp):possibleTalks.get(i))){
                             System.out.println("OVERLAP");
+                            Toast.makeText(TalkSelector.this, "Talk timing conflict, choose another talk", Toast.LENGTH_SHORT).show();
                             overlap = true;
                         }
                     }

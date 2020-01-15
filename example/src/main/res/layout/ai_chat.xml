@@ -1,46 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/Constraint"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#00CC0000">
-
-    <com.ibm.watson.developer_cloud.android.myapplication.StartChat
-        android:id="@+id/ChatBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cb_isSoftInputHidden="true"
-        app:cb_isTextCleanerEnabled="true"
-        app:cb_messageBoxHint="Type here..."
-        app:cb_micClickWarningMessage="warning message"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </com.ibm.watson.developer_cloud.android.myapplication.StartChat>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/gradient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:contentDescription="@string/todo"
-        app:srcCompat="@drawable/gradient" />
+    android:layout_width="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintParent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#00CC0000">
+
+        <com.ibm.watson.developer_cloud.android.myapplication.StartChat
+            android:id="@+id/ChatBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cb_isSoftInputHidden="true"
+            app:cb_isTextCleanerEnabled="true"
+            app:cb_messageBoxHint="Type here..."
+            app:cb_micClickWarningMessage="warning message"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </com.ibm.watson.developer_cloud.android.myapplication.StartChat>
 
         <ImageView
             android:id="@+id/back"
@@ -75,4 +59,25 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/gradient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/todo"
+        app:srcCompat="@drawable/gradient" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>

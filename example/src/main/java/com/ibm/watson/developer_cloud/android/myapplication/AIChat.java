@@ -2,6 +2,8 @@ package com.ibm.watson.developer_cloud.android.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -32,6 +34,11 @@ public class AIChat extends AppCompatActivity {
         ImageView fade = (ImageView) findViewById(R.id.gradient);
 
 
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics dm = new DisplayMetrics();
+        display.getMetrics(dm);
+        final int width = dm.widthPixels - 60;
+
         IamAuthenticator assistantAuthenticator = new IamAuthenticator(getString(R.string.assistant_apikey));
         final Assistant assistant = new Assistant("2020-01-10", assistantAuthenticator);
         assistant.setServiceUrl(getString(R.string.assistant_url));
@@ -40,7 +47,7 @@ public class AIChat extends AppCompatActivity {
 
         final StartChat chatBarView;
 
-        final ChatBoxes cb = new ChatBoxes();
+        final ChatBoxes cb = new ChatBoxes(width);
         cb.addAssistantBox("Hello, I am Watson Assistant. Your conference planner.", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
         assistant.createSession(options).enqueue(new ServiceCallback<SessionResponse>() {
@@ -98,6 +105,15 @@ public class AIChat extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                        startActivity(intent);
+                    } else if (tempResponse.equalsIgnoreCase("Great! What are your interests?")){
+                        try{
+                            sleep(1000);
+                        }
+                        catch(InterruptedException e){
+                            e.printStackTrace();
+                        }
+                        Intent intent = new Intent(getApplicationContext(), SelectTags.class);
                         startActivity(intent);
                     }
                 }

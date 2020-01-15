@@ -2,6 +2,8 @@ package com.ibm.watson.developer_cloud.android.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.http.ServiceCallback;
@@ -28,6 +30,11 @@ public class AIChat extends AppCompatActivity {
         setContentView(R.layout.ai_chat);
 
 
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics dm = new DisplayMetrics();
+        display.getMetrics(dm);
+        final int width = dm.widthPixels - 60;
+
         IamAuthenticator assistantAuthenticator = new IamAuthenticator(getString(R.string.assistant_apikey));
         final Assistant assistant = new Assistant("2020-01-10", assistantAuthenticator);
         assistant.setServiceUrl(getString(R.string.assistant_url));
@@ -36,7 +43,7 @@ public class AIChat extends AppCompatActivity {
 
         final StartChat chatBarView;
 
-        final ChatBoxes cb = new ChatBoxes();
+        final ChatBoxes cb = new ChatBoxes(60);
         cb.addAssistantBox("Hello, I am Watson Assistant. Your conference planner.", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
         assistant.createSession(options).enqueue(new ServiceCallback<SessionResponse>() {

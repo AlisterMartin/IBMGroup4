@@ -2,6 +2,8 @@ package com.ibm.watson.developer_cloud.android.myapplication;
 
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,6 +24,10 @@ public class SelectTags extends AppCompatActivity {
         int tempViewID;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_tags);
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics dm = new DisplayMetrics();
+        display.getMetrics(dm);
+        final int width = (dm.widthPixels - 120)/3;
         ArrayList<String> tags = Data.getUniqueTags();
         final ConstraintLayout layout = findViewById(R.id.innerLayout);
         TextView text1 = new TextView(getApplicationContext());
@@ -57,7 +63,7 @@ public class SelectTags extends AppCompatActivity {
         set1.clone(layout);
         set1.connect(text1.getId(), ConstraintSet.TOP, layout.getId(), ConstraintSet.TOP, 400);
         set1.connect(text1.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
-        set1.constrainWidth(text1.getId(), 300);
+        set1.constrainWidth(text1.getId(), width);
         set1.applyTo(layout);
         for (int i = 1; i < tags.size(); i++){
             TextView text = new TextView(getApplicationContext());
@@ -98,7 +104,7 @@ public class SelectTags extends AppCompatActivity {
                 set.connect(text.getId(), ConstraintSet.TOP, tempViewID, ConstraintSet.TOP);
                 set.connect(text.getId(), ConstraintSet.LEFT, tempViewID, ConstraintSet.RIGHT, 30);
             }
-            set.constrainWidth(text.getId(), 300);
+            set.constrainWidth(text.getId(), width);
             tempViewID = text.getId();
             set.applyTo(layout);
         }

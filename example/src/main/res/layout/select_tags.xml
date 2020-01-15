@@ -28,6 +28,7 @@
         app:srcCompat="@drawable/hexology_name" />
 
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="408dp"
         android:layout_height="666dp"
         android:layout_marginStart="1dp"

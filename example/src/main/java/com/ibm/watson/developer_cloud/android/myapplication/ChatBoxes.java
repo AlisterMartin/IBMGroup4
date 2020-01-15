@@ -79,7 +79,7 @@ public class ChatBoxes {
         ConstraintSet set = new ConstraintSet();
         set.clone(layout);
         set.connect(boxes[0].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-        set.connect(boxes[0].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
+        set.connect(boxes[0].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT);
         set.constrainMaxWidth(boxes[0].getId(), maxWidth);
         set.applyTo(layout);
         count++;
@@ -103,7 +103,7 @@ public class ChatBoxes {
                 ConstraintSet set = new ConstraintSet();
                 set.clone(layout);
                 set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-                set.connect(boxes[pointer].getId(), ConstraintSet.RIGHT, layout.getId(), ConstraintSet.RIGHT, 30);
+                set.connect(boxes[pointer].getId(), ConstraintSet.RIGHT, layout.getId(), ConstraintSet.RIGHT);
                 set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
                 set.constrainMaxWidth(boxes[pointer].getId(), maxWidth);
                 set.applyTo(layout);
@@ -132,7 +132,7 @@ public class ChatBoxes {
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
+            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT);
             set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
             set.constrainMaxWidth(boxes[pointer].getId(), maxWidth);
             set.applyTo(layout);
@@ -165,7 +165,7 @@ public class ChatBoxes {
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
+            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT);
             set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
             set.constrainMaxWidth(boxes[pointer].getId(), maxWidth);
             set.applyTo(layout);

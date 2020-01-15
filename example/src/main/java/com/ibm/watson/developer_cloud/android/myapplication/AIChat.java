@@ -43,7 +43,7 @@ public class AIChat extends AppCompatActivity {
 
         final StartChat chatBarView;
 
-        final ChatBoxes cb = new ChatBoxes(60);
+        final ChatBoxes cb = new ChatBoxes(width);
         cb.addAssistantBox("Hello, I am Watson Assistant. Your conference planner.", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
         assistant.createSession(options).enqueue(new ServiceCallback<SessionResponse>() {

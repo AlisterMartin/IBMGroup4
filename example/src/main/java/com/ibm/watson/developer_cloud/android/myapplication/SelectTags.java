@@ -63,11 +63,10 @@ public class SelectTags extends AppCompatActivity {
         set1.clone(layout);
         set1.connect(text1.getId(), ConstraintSet.TOP, layout.getId(), ConstraintSet.TOP, 400);
         set1.connect(text1.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
-        set1.constrainWidth(text1.getId(), width);
         set1.applyTo(layout);
         for (int i = 1; i < tags.size(); i++){
             TextView text = new TextView(getApplicationContext());
-            text.setText(tags.get(0));
+            text.setText(tags.get(i));
             text.setId(View.generateViewId());
             text.setBackgroundResource(R.color.lightRed);
             text.setTextSize(20);
@@ -97,14 +96,8 @@ public class SelectTags extends AppCompatActivity {
             layout.addView(text);
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);
-            if(i%3 == 0){
-                set.connect(text.getId(), ConstraintSet.TOP, tempViewID, ConstraintSet.BOTTOM, 30);
-                set.connect(text.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
-            }else{
-                set.connect(text.getId(), ConstraintSet.TOP, tempViewID, ConstraintSet.TOP);
-                set.connect(text.getId(), ConstraintSet.LEFT, tempViewID, ConstraintSet.RIGHT, 30);
-            }
-            set.constrainWidth(text.getId(), width);
+            set.connect(text.getId(), ConstraintSet.TOP, tempViewID, ConstraintSet.BOTTOM, 30);
+            set.connect(text.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
             tempViewID = text.getId();
             set.applyTo(layout);
         }

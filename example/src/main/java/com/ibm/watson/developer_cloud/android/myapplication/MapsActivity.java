@@ -1,17 +1,11 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
-import androidx.core.app.ActivityCompat;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
-
 import android.view.View;
 import android.widget.TextView;
-
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,11 +13,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private String conferenceTitle = "Conference1";
     private String conferenceAddress = "123 Somewhere Lane \n Sheffield \n s1 5hk";
 
     @Override
@@ -35,7 +29,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
 
-        TextView address = (TextView) findViewById(R.id.Address);
+        TextView addressT = (TextView) findViewById(R.id.addressT);
+        TextView address = (TextView) findViewById(R.id.address);
+        addressT.setText(conferenceTitle);
         address.setText(conferenceAddress);
 
         FloatingActionButton fab = findViewById(R.id.FAB);

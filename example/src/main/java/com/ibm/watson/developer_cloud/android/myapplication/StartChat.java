@@ -74,7 +74,7 @@ public class StartChat extends FrameLayout {
         super.onFinishInflate();
         messageEditText = this.findViewById(R.id.messageEditText);
         sendButton = this.findViewById(R.id.sendButton);
-        sendButton.setImageResource(R.drawable.input_send);
+        sendButton.setImageResource(R.drawable.ic_send_black_24dp);
         sendButton.setColorFilter(sendButtonBackgroundColor);
         sendButton.getBackground().setColorFilter(sendButtonColor, PorterDuff.Mode.SRC_ATOP);
         if (messageBoxHint != null) messageEditText.setHint(messageBoxHint);

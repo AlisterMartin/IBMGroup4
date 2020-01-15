@@ -31,6 +31,7 @@
 <string name="background">background</string>
     <string name="submit">submit</string>
     <string name="get_directions">Get Directions</string>
+    <string name="todo">TODO</string>
 
 </resources>
 

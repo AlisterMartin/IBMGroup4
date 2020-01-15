@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     android:background="#CC0000">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FABdone"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:srcCompat="@drawable/ic_check_black_24dp"
+        app:backgroundTint="#fff"
+        app:borderWidth="2dp"
+        app:fabCustomSize="75dp"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="60dp"
+        app:useCompatPadding="true" />
+
     <ImageView
         android:id="@+id/ibmImage3"
         android:layout_width="95dp"
@@ -28,8 +46,8 @@
         app:srcCompat="@drawable/hexology_name" />
 
     <ScrollView
-        android:layout_width="408dp"
-        android:layout_height="666dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"

@@ -3,6 +3,8 @@ package com.ibm.watson.developer_cloud.android.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.http.ServiceCallback;
 import com.ibm.cloud.sdk.core.security.IamAuthenticator;
@@ -26,6 +28,8 @@ public class AIChat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ai_chat);
+
+        ImageView fade = (ImageView) findViewById(R.id.gradient);
 
 
         IamAuthenticator assistantAuthenticator = new IamAuthenticator(getString(R.string.assistant_apikey));

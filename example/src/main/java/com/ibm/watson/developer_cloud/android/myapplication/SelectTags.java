@@ -29,7 +29,7 @@ public class SelectTags extends AppCompatActivity {
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics dm = new DisplayMetrics();
         display.getMetrics(dm);
-        final int width = (dm.widthPixels - 120)/3;
+        final int width = (dm.widthPixels - 120) / 3;
         ArrayList<String> tags = Data.getUniqueTags();
         final ConstraintLayout layout = findViewById(R.id.innerLayout);
         TextView text1 = new TextView(getApplicationContext());
@@ -39,21 +39,21 @@ public class SelectTags extends AppCompatActivity {
         text1.setBackgroundResource(R.color.lightRed);
         text1.setTextSize(20);
         text1.setPadding(20, 20, 20, 20);
-        text1.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
-        final int tmpid1= text1.getId();
+        text1.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        final int tmpid1 = text1.getId();
         text1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean flag = false;
-                for (int i = 0; i < tagIndexes.size(); i++){
-                    if (!flag && tagIndexes.get(i) == 0){
+                for (int i = 0; i < tagIndexes.size(); i++) {
+                    if (!flag && tagIndexes.get(i) == 0) {
                         System.out.println(0 + " deactivate");
                         tagIndexes.remove(i);
                         layout.getViewById(tmpid1).setBackgroundResource(R.color.lightRed);
                         flag = true;
                     }
                 }
-                if (!flag){
+                if (!flag) {
                     System.out.println(0 + " activate");
                     tagIndexes.add(0);
                     layout.getViewById(tmpid1).setBackgroundResource(R.color.lightGreen);
@@ -66,29 +66,29 @@ public class SelectTags extends AppCompatActivity {
         set1.connect(text1.getId(), ConstraintSet.TOP, layout.getId(), ConstraintSet.TOP, 400);
         set1.connect(text1.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
         set1.applyTo(layout);
-        for (int i = 1; i < tags.size(); i++){
+        for (int i = 1; i < tags.size(); i++) {
             TextView text = new TextView(getApplicationContext());
             text.setText(tags.get(i));
             text.setId(View.generateViewId());
             text.setBackgroundResource(R.color.lightRed);
             text.setTextSize(20);
             text.setPadding(20, 20, 20, 20);
-            text.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+            text.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             final int temp = i;
-            final int tmpid= text.getId();
+            final int tmpid = text.getId();
             text.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     boolean flag = false;
-                    for (int i = 0; i < tagIndexes.size(); i++){
-                        if (!flag && tagIndexes.get(i) == temp){
+                    for (int i = 0; i < tagIndexes.size(); i++) {
+                        if (!flag && tagIndexes.get(i) == temp) {
                             System.out.println(temp + " deactivate");
                             tagIndexes.remove(i);
                             layout.getViewById(tmpid).setBackgroundResource(R.color.lightRed);
                             flag = true;
                         }
                     }
-                    if (!flag){
+                    if (!flag) {
                         System.out.println(temp + " activate");
                         tagIndexes.add(temp);
                         layout.getViewById(tmpid).setBackgroundResource(R.color.lightGreen);
@@ -102,18 +102,21 @@ public class SelectTags extends AppCompatActivity {
             set.connect(text.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
             tempViewID = text.getId();
             set.applyTo(layout);
-            FloatingActionButton fab = findViewById(R.id.FABdone);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    for(int i : tagIndexes){
+        }
+        FloatingActionButton fab = findViewById(R.id.FABdone);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tagIndexes.size() > 0) {
+                    for (int i : tagIndexes) {
                         ArrayList<String> tags = Data.getUniqueTags();
                         Data.userSelectedTags.add(tags.get(i));
                     }
                     finish();
                 }
-            });
-        }
+            }
+        });
     }
-
 }
+
+

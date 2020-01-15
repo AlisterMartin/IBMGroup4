@@ -95,6 +95,15 @@ public class AIChat extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                         startActivity(intent);
+                    } else if (tempResponse.equalsIgnoreCase("Great! What are your interests?")){
+                        try{
+                            sleep(1000);
+                        }
+                        catch(InterruptedException e){
+                            e.printStackTrace();
+                        }
+                        Intent intent = new Intent(getApplicationContext(), SelectTags.class);
+                        startActivity(intent);
                     }
                 }
 

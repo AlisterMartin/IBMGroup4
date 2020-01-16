@@ -61,11 +61,11 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".TalkSelector" android:parentActivityName=".TalkSelector"
+        <activity android:name=".Itinerary" android:parentActivityName=".Itinerary"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".Itinerary" android:parentActivityName=".Itinerary"
+        <activity android:name=".TalkSelector" android:parentActivityName=".TalkSelector"
             android:screenOrientation="portrait">
         </activity>
 

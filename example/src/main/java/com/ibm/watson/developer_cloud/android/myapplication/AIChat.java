@@ -25,6 +25,7 @@ public class AIChat extends AppCompatActivity {
     private String sessionId;
     private boolean wait = false;
     private String tempResponse;
+    private StartChat chatBarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,7 @@ public class AIChat extends AppCompatActivity {
 
         CreateSessionOptions options = new CreateSessionOptions.Builder(getString(R.string.assistant_id)).build();
 
-        final StartChat chatBarView;
-
-        final ChatBoxes cb = new ChatBoxes(width);
+        final ChatBoxes cb = new ChatBoxes(width, 20);
         cb.addAssistantBox("Hello, I am Watson Assistant. Which conference are you attending?", getApplicationContext(), (ConstraintLayout) findViewById(R.id.ConstraintCon));
 
         assistant.createSession(options).enqueue(new ServiceCallback<SessionResponse>() {
@@ -63,7 +62,7 @@ public class AIChat extends AppCompatActivity {
             }
         });
 
-        chatBarView = (StartChat) findViewById(R.id.ChatBar);
+        chatBarView = findViewById(R.id.ChatBar);
 
         chatBarView.setSendClickListener(new View.OnClickListener() {
             @Override
@@ -123,11 +122,24 @@ public class AIChat extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         Intent intent = new Intent(getApplicationContext(), ConferenceSelect.class);
-                        startActivity(intent);
+                        startActivityForResult(intent, 0);
                     }
                 }
 
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 0) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                // The user picked a contact.
+                // The Intent's data Uri identifies which contact was selected.
+                chatBarView.setMessageText(data.getStringExtra("SelectedText"));
+                // Do something with the contact here (bigger example below)
+            }
+        }
     }
 }

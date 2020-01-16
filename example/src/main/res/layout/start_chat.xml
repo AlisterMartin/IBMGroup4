@@ -46,8 +46,8 @@
         <ImageButton
             android:id="@+id/sendButton"
             style="@style/Widget.AppCompat.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:background="#00FFFFFF"
             android:contentDescription="TODO"

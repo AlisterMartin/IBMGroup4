@@ -122,7 +122,7 @@ public class AIChat extends AppCompatActivity {
                         catch(InterruptedException e){
                             e.printStackTrace();
                         }
-                        Intent intent = new Intent(getApplicationContext(), SelectTags.class);
+                        Intent intent = new Intent(getApplicationContext(), ConferenceSelect.class);
                         startActivity(intent);
                     }
                 }

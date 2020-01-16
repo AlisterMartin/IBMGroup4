@@ -110,6 +110,11 @@ public class StartChat extends FrameLayout {
         }
     }
 
+    public void setMessageText(String text) {
+        messageEditText.setText(text);
+
+    }
+
     public void hideSoftInput() {
         View view = ((Activity) context).getCurrentFocus();
         if (view == null) view = new View((context));

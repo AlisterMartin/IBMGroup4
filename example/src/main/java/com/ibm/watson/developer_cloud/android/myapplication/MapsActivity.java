@@ -20,8 +20,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private String conferenceTitle = "Conference1";
-    private String conferenceAddress = "123 Somewhere Lane \n Sheffield \n s1 5hk";
+    private String conferenceTitle = "Chi Conference 2019";
+    private String conferenceAddress = "Exhibition Way\nGlasgow\nG3 8YW";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +37,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         addressT.setText(conferenceTitle);
         address.setText(conferenceAddress);
 
-        TextView bounceText = (TextView) findViewById(R.id.directions);
+        FloatingActionButton bounceBut = (FloatingActionButton) findViewById(R.id.FAB);
         Animation bounce = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
-        bounceText.startAnimation(bounce);
+        bounceBut.startAnimation(bounce);
 
         FloatingActionButton fab = findViewById(R.id.FAB);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Uri gmmIntentUri = Uri.parse("google.navigation:q=Exhibition+Way+Glasgow&mode=w");
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=Exhibition+Way+Glasgow&mode=d");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {

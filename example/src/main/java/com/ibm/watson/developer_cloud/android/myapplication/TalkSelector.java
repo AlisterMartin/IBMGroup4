@@ -16,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TalkSelector extends AppCompatActivity {
@@ -174,8 +175,9 @@ public class TalkSelector extends AppCompatActivity {
             public void onClick(View v) {
                 if (talkIndexes.size() > 0) {
                     for(int i : talkIndexes){
-                        Data.userSelectedTalks.add(i);
+                        Data.userSelectedTalks.add(possibleTalks.get(i));
                     }
+                    Collections.sort(Data.userSelectedTalks);
                     Intent i = new Intent(getApplicationContext(), Itinerary.class);
                     startActivity(i);
                 }

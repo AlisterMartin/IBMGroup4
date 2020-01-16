@@ -8,6 +8,7 @@
 
 
     <ScrollView
+        android:id="@+id/scrollCon"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -27,8 +28,8 @@
         <ImageView
             android:id="@+id/gradient"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_height="109dp"
+            android:layout_marginTop="30dp"
             android:contentDescription="@string/todo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,8 +72,78 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/con1"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="200dp"
+            android:background="@color/lightRed"
+            android:padding="20dp"
+            android:text="Chi Conference 2019"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/con2"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="270dp"
+            android:background="@color/lightRed"
+            android:padding="20dp"
+            android:text="Another Conference"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/con3"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="340dp"
+            android:background="@color/lightRed"
+            android:padding="20dp"
+            android:text="Another Conference"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/con4"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="410dp"
+            android:background="@color/lightRed"
+            android:padding="20dp"
+            android:text="Another Conference"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/con5"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="480dp"
+            android:background="@color/lightRed"
+            android:padding="20dp"
+            android:text="Another Conference"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/FABdone2"
+            android:id="@+id/FABdone5"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginEnd="20dp"

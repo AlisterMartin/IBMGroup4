@@ -29,6 +29,7 @@ public class Data {
     public static List<Confrence> confrences = new ArrayList<Confrence>();
     public static List<String> userSelectedTags = new ArrayList<String>();
     public static List<Tags> tags = new ArrayList<Tags>();
+    public static List<Integer> userSelectedTalks = new ArrayList<>();
 
     public Data(){
 

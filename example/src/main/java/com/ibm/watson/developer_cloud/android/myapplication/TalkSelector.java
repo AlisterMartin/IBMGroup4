@@ -1,5 +1,6 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -167,18 +168,18 @@ public class TalkSelector extends AppCompatActivity {
             set.applyTo(layout);
 
         }
-        /*FloatingActionButton fab = findViewById(R.id.FABdone);
+        FloatingActionButton fab = findViewById(R.id.FABdone3);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (talkIndexes.size() > 0) {
-                    for (int i : talkIndexes) {
-                        ArrayList<String> tags = Data.getUniqueTags();
-                        Data.userSelectedTags.add(tags.get(i));
+                    for(int i : talkIndexes){
+                        Data.userSelectedTalks.add(i);
                     }
-                    finish();
+                    Intent i = new Intent(getApplicationContext(), Itinerary.class);
+                    startActivity(i);
                 }
             }
-        });*/
+        });
     }
 }

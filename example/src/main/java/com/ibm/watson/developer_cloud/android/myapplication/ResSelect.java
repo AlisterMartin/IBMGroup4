@@ -22,5 +22,6 @@ public class ResSelect extends AppCompatActivity {
         text1.setTextSize(20);
         text1.setPadding(20, 20, 20, 20);
         text1.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+
     }
 }

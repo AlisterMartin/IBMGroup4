@@ -1,7 +1,6 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.http.ServiceCallback;
@@ -14,15 +13,15 @@ import com.ibm.watson.natural_language_understanding.v1.model.ConceptsOptions;
 import com.ibm.watson.natural_language_understanding.v1.model.Features;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Collections;
+
+import static java.lang.Thread.sleep;
 
 public class Data {
 
@@ -35,6 +34,7 @@ public class Data {
 }
 
     public static void initData(Context context){
+/*
         InputStream inputStream;
         String data[];
         inputStream = context.getResources().openRawResource(R.raw.data);
@@ -55,6 +55,30 @@ public class Data {
         catch (IOException ex){
             throw new RuntimeException("Error!! cant read");
         }
+*/
+
+
+        try {
+
+            InputStream ins = context.getResources().openRawResource(R.raw.data);
+            BufferedReader br = new BufferedReader(new InputStreamReader(ins));
+
+
+            String line = " ";
+            String[] vals;
+            while ((line = br.readLine()) != null) {
+                vals = line.split(",");
+                if (vals.length > 6) {
+                    confrences.add(new Confrence(vals[0], vals[1], vals[2], vals[3], vals[4], vals[5], vals[6]));
+                }else{
+                    System.out.println(line);
+                }
+
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        };
+
 
         IamAuthenticator authenticator = new IamAuthenticator(context.getString(R.string.natural_language_apikey));
         NaturalLanguageUnderstanding naturalLanguageUnderstanding = new NaturalLanguageUnderstanding("2020-01-10", authenticator);
@@ -91,8 +115,11 @@ public class Data {
                         //System.out.println("Label: " + response.getResult().getCategories().get(j).getLabel() + " Score: " + response.getResult().getCategories().get(j).getScore());
                         String[] temp = response.getResult().getCategories().get(j).getLabel().split("/");
                         for(int a = 1; a < temp.length; a++){
-                            tag.add(temp[a]);
-                            score.add(response.getResult().getCategories().get(j).getScore());
+                            double s = response.getResult().getCategories().get(j).getScore();
+                            if(s <= 90) {
+                                tag.add(temp[a]);
+                                score.add(response.getResult().getCategories().get(j).getScore());
+                            }
                         }
                         //tag.add(response.getResult().getCategories().get(j).getLabel());
                         //score.add(response.getResult().getCategories().get(j).getScore());
@@ -117,15 +144,28 @@ public class Data {
         System.out.println("done !!!!!");
     }
 
-    public static ArrayList<String> getUniqueTags()
-    {
+    public static ArrayList<String> getUniqueTags() {
         ArrayList<String> uniqueTagNames = new ArrayList<>();
-        for (Tags tag : tags){
-            for (String tagName: tag.tags){
-                if (!uniqueTagNames.contains(tagName))
-                    uniqueTagNames.add(tagName);
+        ArrayList<String> allTagNames = new ArrayList<>();
+        while(tags.size()<confrences.size()){
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        }
+        for(int i = 0; i < tags.size(); i++){
+            for(int j = 0; j < tags.get(i).tags.size(); j++) {
+                allTagNames.add(tags.get(i).tags.get(j));
             }
         }
+
+        for(int i = 0; i < allTagNames.size(); i++){
+            if(!(uniqueTagNames.contains(allTagNames.get(i)))){
+                uniqueTagNames.add(allTagNames.get(i));
+            }
+        }
+
         Collections.sort(uniqueTagNames);
         return uniqueTagNames;
     }
@@ -161,4 +201,14 @@ public class Data {
         }
         return false;
     }
+    
+
+    public static String relavantReading(int index){
+        String str = confrences.get(index).title + "\n";
+        for(int i = 0; i < tags.get(index).url.size(); i++){
+            str = str + "\n" + tags.get(index).relavantTitle.get(i) + " - " + tags.get(index).url.get(i) ;
+        }
+        return str;
+    }
+
 }

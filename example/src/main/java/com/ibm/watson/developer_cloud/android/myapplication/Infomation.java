@@ -9,7 +9,7 @@ public class Infomation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.conference_info);
+        setContentView(R.layout.talk_info);
         Data.initData(getApplicationContext());
     }
 }

@@ -32,6 +32,10 @@
     <string name="submit">submit</string>
     <string name="get_directions">Get Directions</string>
     <string name="todo">TODO</string>
+    <string name="time">Time:</string>
+    <string name="room_number">Room Number:</string>
+    <string name="resources">Resources</string>
+    <string name="placeholder">placeholder</string>
 
 </resources>
 

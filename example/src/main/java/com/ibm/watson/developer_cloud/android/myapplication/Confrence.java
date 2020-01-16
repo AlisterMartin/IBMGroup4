@@ -24,7 +24,7 @@ public class Confrence {
         String[] s = startTime.split(" ");
         String[] e = endTime.split(" ");
 
-        return (s[0] + " " + s[2] + " " + s[3] + " " + s[5] + " " + s[7] + " to " + e[6]);
+        return (s[0] + " " + s[2] + " " + s[3] + " " + s[5] + " " + s[7] + " to " + e[6] + ":00");
     }
 
 

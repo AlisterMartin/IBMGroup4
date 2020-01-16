@@ -207,7 +207,7 @@ public class Data {
     public static String relavantReading(int index){
         String str = "";
         for(int i = 0; i < tags.get(index).url.size(); i++){
-            str = str + "\n" + tags.get(index).url.get(i) ;
+            str = str + "\n\n" + tags.get(index).url.get(i) ;
         }
         return str;
     }

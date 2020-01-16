@@ -175,6 +175,7 @@ public class TalkSelector extends AppCompatActivity {
             public void onClick(View v) {
                 if (talkIndexes.size() > 0) {
                     for(int i : talkIndexes){
+                        Data.userSelectedTalks.remove(possibleTalks.get(i));
                         Data.userSelectedTalks.add(possibleTalks.get(i));
                     }
                     Collections.sort(Data.userSelectedTalks);

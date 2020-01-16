@@ -56,8 +56,9 @@ public class Itinerary extends AppCompatActivity {
         text2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                Intent i = new Intent(getApplicationContext(), TalkInfo.class);
+                i.putExtra("selectedIndex", Data.userSelectedTalks.get(temp2));
+                startActivity(i);
             }
         });
         layout.addView(text2);
@@ -97,7 +98,9 @@ public class Itinerary extends AppCompatActivity {
             text.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent i = new Intent(getApplicationContext(), TalkInfo.class);
+                    i.putExtra("selectedIndex", Data.userSelectedTalks.get(temp));
+                    startActivity(i);
                 }
             });
             layout.addView(text);
@@ -109,13 +112,6 @@ public class Itinerary extends AppCompatActivity {
             set.applyTo(layout);
 
         }
-        FloatingActionButton fab = findViewById(R.id.FABdone4);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
 }

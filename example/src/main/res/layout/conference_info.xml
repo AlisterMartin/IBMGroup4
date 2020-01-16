@@ -2,12 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-74dp"
+        tools:layout_editor_absoluteY="-38dp">
 
         <ImageView
             android:id="@+id/back2"
@@ -21,34 +25,76 @@
 
         <ImageView
             android:id="@+id/gradient2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/gradient"
             android:layout_width="wrap_content"
             android:layout_height="109dp"
             android:layout_marginTop="30dp"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/todo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/gradient" />
 
         <ImageView
             android:id="@+id/hexologyLogo3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/hexology_name"
             android:layout_width="179dp"
             android:layout_height="56dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="15dp"
-            android:contentDescription="@string/hexology_logo" />
+            android:contentDescription="@string/hexology_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/hexology_name" />
 
         <ImageView
             android:id="@+id/ibmImage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ibm_logo"
             android:layout_width="95dp"
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
-            android:contentDescription="@string/ibm_logo2" />
+            android:contentDescription="@string/ibm_logo2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ibm_logo" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conference1"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conference1"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="248dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conference1"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="248dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conference1"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="248dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conference1"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="248dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

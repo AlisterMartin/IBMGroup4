@@ -48,7 +48,7 @@ public class AIChat extends AppCompatActivity {
         final StartChat chatBarView;
 
         final ChatBoxes cb = new ChatBoxes(width);
-        cb.addAssistantBox("Hello, I am Watson Assistant. Your conference planner.", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
+        cb.addAssistantBox("Hello, I am Watson Assistant. Which conference are you attending?", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
         assistant.createSession(options).enqueue(new ServiceCallback<SessionResponse>() {
             @Override
@@ -97,7 +97,7 @@ public class AIChat extends AppCompatActivity {
                     }
                     cb.addAssistantBox(tempResponse, getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
 
-                    if(tempResponse.equalsIgnoreCase("Here is your route to the conference.")){
+                    if(tempResponse.equalsIgnoreCase("Here is the venue.")){
                         try{
                             sleep(1000);
                         }

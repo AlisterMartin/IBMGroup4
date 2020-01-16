@@ -3,7 +3,6 @@ package com.ibm.watson.developer_cloud.android.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,8 +22,6 @@ public class StartChat extends FrameLayout {
     private boolean isAutoClearEnabled;
     private boolean isSoftInputHidden;
     private String messageBoxHint = null;
-    private int sendButtonColor;
-    private int sendButtonBackgroundColor;
 
 
     public StartChat(Context context) {
@@ -56,12 +53,6 @@ public class StartChat extends FrameLayout {
         isSoftInputHidden = typedArray
                 .getBoolean(R.styleable.chatbar_cb_isSoftInputHidden, false);
 
-        sendButtonColor = typedArray
-                .getColor(R.styleable.chatbar_cb_sendButtonColor, Color.rgb(00, 96, 88));
-
-        sendButtonBackgroundColor = typedArray
-                .getColor(R.styleable.chatbar_cb_sendButtonBackgroundColor, Color.WHITE);
-
         typedArray.recycle();
 
         LayoutInflater inflater = (LayoutInflater) context
@@ -75,8 +66,6 @@ public class StartChat extends FrameLayout {
         messageEditText = this.findViewById(R.id.messageEditText);
         sendButton = this.findViewById(R.id.sendButton);
         sendButton.setImageResource(R.drawable.ic_send_black_24dp);
-        sendButton.setColorFilter(sendButtonBackgroundColor);
-        sendButton.getBackground().setColorFilter(sendButtonColor, PorterDuff.Mode.SRC_ATOP);
         if (messageBoxHint != null) messageEditText.setHint(messageBoxHint);
         messageEditText.addTextChangedListener(new TextWatcher() {
             @Override

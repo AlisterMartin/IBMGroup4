@@ -1,17 +1,14 @@
 package com.ibm.watson.developer_cloud.android.myapplication;
 
-import androidx.core.app.ActivityCompat;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
-
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,12 +16,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private String conferenceAddress = "123 Somewhere Lane \n Sheffield \n s1 5hk";
+    private String conferenceTitle = "Chi Conference 2019";
+    private String conferenceAddress = "Exhibition Way\nGlasgow\nG3 8YW";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +32,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
 
-        TextView address = (TextView) findViewById(R.id.Address);
+        TextView addressT = (TextView) findViewById(R.id.addressT);
+        TextView address = (TextView) findViewById(R.id.address);
+        addressT.setText(conferenceTitle);
         address.setText(conferenceAddress);
+
+        FloatingActionButton bounceBut = (FloatingActionButton) findViewById(R.id.FAB);
+        Animation bounce = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+        bounceBut.startAnimation(bounce);
 
         FloatingActionButton fab = findViewById(R.id.FAB);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Uri gmmIntentUri = Uri.parse("geo:55.861224,-4.288927");
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=Exhibition+Way+Glasgow&mode=d");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(mapIntent);
                 }
+
             }
         });
     }

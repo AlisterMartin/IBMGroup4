@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +30,10 @@ public class Welcome extends AppCompatActivity {
         TextView Text2 = (TextView)findViewById(R.id.message2);
         Animation animSlideLeftDelay = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_left_delay);
         Text2.startAnimation(animSlideLeftDelay);
+
+        ImageView arrow = (ImageView) findViewById(R.id.arrow);
+        Animation bounce = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+        arrow.startAnimation(bounce);
 
         FloatingActionButton tick = (FloatingActionButton) findViewById(R.id.FABWel);
                 tick.setOnClickListener(new View.OnClickListener() {

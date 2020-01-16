@@ -17,25 +17,27 @@ public class ChatBoxes {
     private int vis;
     private int MAXBOXES;
     private boolean waiting;
+    private int maxWidth;
 
 
-    public ChatBoxes(){
+    public ChatBoxes(int maxWidth){
         MAXBOXES = 10;
         this.count = 0;
         boxes = new TextView[MAXBOXES];
         vis = 0;
         pointer = 0;
         waiting = false;
-
+        this.maxWidth = maxWidth;
     }
 
-    public ChatBoxes(int max) {
+    public ChatBoxes(int maxWidth, int max) {
         MAXBOXES = max;
         this.count = 0;
         boxes = new TextView[MAXBOXES];
         vis = 0;
         pointer = 0;
         waiting = false;
+        this.maxWidth = maxWidth;
     }
 
     public void setCount(int count) {
@@ -77,7 +79,8 @@ public class ChatBoxes {
         ConstraintSet set = new ConstraintSet();
         set.clone(layout);
         set.connect(boxes[0].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-        set.connect(boxes[0].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
+        set.connect(boxes[0].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT);
+        set.constrainMaxWidth(boxes[0].getId(), maxWidth);
         set.applyTo(layout);
         count++;
         pointer++;
@@ -100,8 +103,9 @@ public class ChatBoxes {
                 ConstraintSet set = new ConstraintSet();
                 set.clone(layout);
                 set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-                set.connect(boxes[pointer].getId(), ConstraintSet.RIGHT, layout.getId(), ConstraintSet.RIGHT, 30);
+                set.connect(boxes[pointer].getId(), ConstraintSet.RIGHT, layout.getId(), ConstraintSet.RIGHT);
                 set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+                set.constrainMaxWidth(boxes[pointer].getId(), maxWidth);
                 set.applyTo(layout);
                 int i = count < MAXBOXES ? count++ : count;
                 pointer++;
@@ -128,8 +132,9 @@ public class ChatBoxes {
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
+            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT);
             set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+            set.constrainMaxWidth(boxes[pointer].getId(), maxWidth);
             set.applyTo(layout);
             count = count < MAXBOXES ? count + 1 : MAXBOXES;
             pointer++;
@@ -160,8 +165,9 @@ public class ChatBoxes {
             ConstraintSet set = new ConstraintSet();
             set.clone(layout);
             set.connect(boxes[pointer].getId(), ConstraintSet.BOTTOM, layout.getId(), ConstraintSet.BOTTOM, 200);
-            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
+            set.connect(boxes[pointer].getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT);
             set.connect(boxes[(pointer + MAXBOXES - 1) % MAXBOXES].getId(), ConstraintSet.BOTTOM, boxes[pointer].getId(), ConstraintSet.TOP, 30);
+            set.constrainMaxWidth(boxes[pointer].getId(), maxWidth);
             set.applyTo(layout);
         }
     }

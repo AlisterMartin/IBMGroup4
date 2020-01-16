@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
         android:id="@+id/scroll"
@@ -15,12 +15,25 @@
         android:scrollbarStyle="insideOverlay">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ConstraintCon"
+            android:id="@+id/innerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingLeft="30dp"
             android:paddingRight="30dp">
 
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="170dp"
+                android:text="Choose Tags"
+                android:textColor="@android:color/black"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -29,7 +42,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/gradient"
+            android:id="@+id/gradient3"
             android:layout_width="match_parent"
             android:layout_height="109dp"
             android:layout_marginTop="30dp"
@@ -40,7 +53,7 @@
             app:srcCompat="@drawable/gradient" />
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/back3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:contentDescription="@string/todo"
@@ -50,18 +63,18 @@
             app:srcCompat="@color/hexRed" />
 
         <ImageView
-            android:id="@+id/hexologyLogo3"
+            android:id="@+id/hexologyLogo4"
             android:layout_width="179dp"
             android:layout_height="56dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="16dp"
             android:contentDescription="@string/hexology_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/hexology_name" />
 
         <ImageView
-            android:id="@+id/ibmImage"
+            android:id="@+id/ibmImage3"
             android:layout_width="95dp"
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
@@ -69,27 +82,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ibm_logo" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ConstraintParent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#00CC0000">
+        android:layout_height="match_parent">
 
-        <com.ibm.watson.developer_cloud.android.myapplication.StartChat
-            android:id="@+id/ChatBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cb_isSoftInputHidden="true"
-            app:cb_isTextCleanerEnabled="true"
-            app:cb_messageBoxHint="Type here..."
-            app:cb_micClickWarningMessage="warning message"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/FABdone2"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:backgroundTint="#fff"
+            app:borderWidth="2dp"
+            app:fabCustomSize="75dp"
+            app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:maxImageSize="60dp"
+            app:srcCompat="@drawable/ic_check_black_24dp"
+            app:useCompatPadding="true" />
 
-        </com.ibm.watson.developer_cloud.android.myapplication.StartChat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

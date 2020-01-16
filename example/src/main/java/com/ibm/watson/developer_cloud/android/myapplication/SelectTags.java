@@ -65,7 +65,7 @@ public class SelectTags extends AppCompatActivity {
         layout.addView(text1);
         ConstraintSet set1 = new ConstraintSet();
         set1.clone(layout);
-        set1.connect(text1.getId(), ConstraintSet.TOP, layout.getId(), ConstraintSet.TOP, 400);
+        set1.connect(text1.getId(), ConstraintSet.TOP, R.id.textView4, ConstraintSet.BOTTOM, 30);
         set1.connect(text1.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 30);
         set1.applyTo(layout);
         for (int i = 1; i < tags.size(); i++) {

@@ -77,7 +77,12 @@
             android:name=".MapsActivity" android:parentActivityName=".AIChat"
             android:label="@string/title_activity_maps2"
             android:screenOrientation="portrait">
+        </activity>
 
+        <activity
+            android:name=".Infomation" android:parentActivityName=".AIChat"
+            android:label="info"
+            android:screenOrientation="portrait">
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

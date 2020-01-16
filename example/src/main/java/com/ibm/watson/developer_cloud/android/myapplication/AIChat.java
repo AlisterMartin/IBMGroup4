@@ -48,7 +48,7 @@ public class AIChat extends AppCompatActivity {
         final StartChat chatBarView;
 
         final ChatBoxes cb = new ChatBoxes(width);
-        cb.addAssistantBox("Hello, I am Watson Assistant. Which conference are you attending?", getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
+        cb.addAssistantBox("Hello, I am Watson Assistant. Which conference are you attending?", getApplicationContext(), (ConstraintLayout) findViewById(R.id.ConstraintCon));
 
         assistant.createSession(options).enqueue(new ServiceCallback<SessionResponse>() {
             @Override
@@ -59,7 +59,7 @@ public class AIChat extends AppCompatActivity {
             @Override
             public void onFailure(Exception e) {
                 sessionId = "-";
-                cb.addAssistantBox("Sorry there was an error creating the session. Error: " + e.toString(), getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
+                cb.addAssistantBox("Sorry there was an error creating the session. Error: " + e.toString(), getApplicationContext(), (ConstraintLayout) findViewById(R.id.ConstraintCon));
             }
         });
 
@@ -68,8 +68,8 @@ public class AIChat extends AppCompatActivity {
         chatBarView.setSendClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cb.addUserBox(chatBarView.getMessageText(), getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
-                cb.addAssistantTyping(getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
+                cb.addUserBox(chatBarView.getMessageText(), getApplicationContext(), (ConstraintLayout) findViewById(R.id.ConstraintCon));
+                cb.addAssistantTyping(getApplicationContext(), (ConstraintLayout) findViewById(R.id.ConstraintCon));
                 MessageInput input = new MessageInput.Builder().messageType("text").text(chatBarView.getMessageText()).build();
                 if (!sessionId.equalsIgnoreCase("-")){
                     MessageOptions options1 = new MessageOptions.Builder(getString(R.string.assistant_id), sessionId).input(input).build();
@@ -95,7 +95,7 @@ public class AIChat extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                    cb.addAssistantBox(tempResponse, getApplicationContext(), (ConstraintLayout) findViewById(R.id.Constraint));
+                    cb.addAssistantBox(tempResponse, getApplicationContext(), (ConstraintLayout) findViewById(R.id.ConstraintCon));
 
                     if(tempResponse.equalsIgnoreCase("Here is the venue.")){
                         try{

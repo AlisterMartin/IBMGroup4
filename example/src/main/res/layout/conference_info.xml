@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/back2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:contentDescription="@string/todo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/hexRed" />
+
+        <ImageView
+            android:id="@+id/gradient2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/gradient"
+            android:layout_width="wrap_content"
+            android:layout_height="109dp"
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/todo" />
+
+        <ImageView
+            android:id="@+id/hexologyLogo3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/hexology_name"
+            android:layout_width="179dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:contentDescription="@string/hexology_logo" />
+
+        <ImageView
+            android:id="@+id/ibmImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ibm_logo"
+            android:layout_width="95dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:contentDescription="@string/ibm_logo2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

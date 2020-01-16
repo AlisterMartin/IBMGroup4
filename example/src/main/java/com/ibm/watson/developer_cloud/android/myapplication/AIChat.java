@@ -115,6 +115,15 @@ public class AIChat extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), SelectTags.class);
                         startActivity(intent);
+                    } else if (tempResponse.equalsIgnoreCase("Here is a list of all the conferences.")){
+                        try{
+                            sleep(1000);
+                        }
+                        catch(InterruptedException e){
+                            e.printStackTrace();
+                        }
+                        Intent intent = new Intent(getApplicationContext(), SelectTags.class);
+                        startActivity(intent);
                     }
                 }
 

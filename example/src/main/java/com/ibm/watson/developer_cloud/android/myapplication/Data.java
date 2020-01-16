@@ -205,9 +205,9 @@ public class Data {
     
 
     public static String relavantReading(int index){
-        String str = confrences.get(index).title + "\n";
+        String str = "";
         for(int i = 0; i < tags.get(index).url.size(); i++){
-            str = str + "\n" + tags.get(index).relavantTitle.get(i) + " - " + tags.get(index).url.get(i) ;
+            str = str + "\n" + tags.get(index).url.get(i) ;
         }
         return str;
     }

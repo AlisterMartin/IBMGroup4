@@ -49,7 +49,7 @@ public class TalkSelector extends AppCompatActivity {
 
         TextView text1 = new TextView(getApplicationContext());
         text1.setId(View.generateViewId());
-        text1.setText(Data.confrences.get(possibleTalks.get(0)).startTime + " - " + Data.confrences.get(possibleTalks.get(0)).endTime);
+        text1.setText(Data.confrences.get(possibleTalks.get(0)).timeInString());
         text1.setTextSize(25);
         text1.setPadding(20, 20, 20, 20);
         text1.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -109,7 +109,7 @@ public class TalkSelector extends AppCompatActivity {
         for (int i = 1; i < possibleTalks.size(); i++) {
             if (!Data.confrences.get(possibleTalks.get(i-1)).startTime.equalsIgnoreCase(Data.confrences.get(possibleTalks.get(i)).startTime)) {
                 TextView text = new TextView(getApplicationContext());
-                text.setText(Data.confrences.get(possibleTalks.get(i)).startTime + " - " + Data.confrences.get(possibleTalks.get(i)).endTime);
+                text.setText(Data.confrences.get(possibleTalks.get(i)).timeInString());
                 text.setId(View.generateViewId());
                 text.setTextSize(25);
                 text.setPadding(20, 20, 20, 20);

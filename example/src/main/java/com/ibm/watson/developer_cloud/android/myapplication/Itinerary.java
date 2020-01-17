@@ -15,6 +15,8 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class Itinerary extends AppCompatActivity {
 
     @Override
@@ -112,6 +114,12 @@ public class Itinerary extends AppCompatActivity {
             set.applyTo(layout);
 
         }
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Data.userSelectedTalks = new ArrayList<>();
     }
 
 }
